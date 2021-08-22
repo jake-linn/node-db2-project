@@ -16,7 +16,7 @@ Build a RESTful API for an "cars" resource. The client for this API is a car dea
 
 #### Cars Schema
 
-The critical information for each car is the vin, make, model, and mileage. They also track transmission type (manual, automatic...) and status of the title (clean, salvage...), but this information is not always immediately known. Write the "up" and "down" functions inside the `data/migrations/01-make_cars_table.js` migration file to satisfy the following schema:
+XXX The critical information for each car is the vin, make, model, and mileage. They also track transmission type (manual, automatic...) and status of the title (clean, salvage...), but this information is not always immediately known. Write the "up" and "down" functions inside the `data/migrations/01-make_cars_table.js` migration file to satisfy the following schema:
 
 | field        | data type        | metadata                                            |
 | ------------ | ---------------- | --------------------------------------------------- |
@@ -32,29 +32,29 @@ The critical information for each car is the vin, make, model, and mileage. They
 
 - Write the following db access functions inside `api/cars/cars-model.js` using Knex:
 
-  - `getAll` resolves to an array of car records (or an empty array)
-  - `getById` resolves to a car record by the given id
-  - `create` resolves to the newly created car record
+  xx `getAll` resolves to an array of car records (or an empty array)
+  xxx `getById` resolves to a car record by the given id
+xxxx  `create` resolves to the newly created car record
 
 #### Write Middleware
 
 - Write the following middlewares inside `api/cars/cars-middleware.js`:
 
-  - `checkCarId` returns a status 404 with a `{ message: "car with id <car id> is not found" }` if the id in `req.params` does not exist in the database.
+  xxx `checkCarId` returns a status 404 with a `{ message: "car with id <car id> is not found" }` if the id in `req.params` does not exist in the database.
 
-  - `checkCarPayload` returns a status 400 with a `{ message: "<field name> is missing" }` if any required field is missing.
+  xxxx  `checkCarPayload` returns a status 400 with a `{ message: "<field name> is missing" }` if any required field is missing.
 
-  - `checkVinNumberValid` returns a status 400 with a `{ message: "vin <vin number> is invalid" }` if the vin number is [invalid](https://www.npmjs.com/package/vin-validator).
+  xxx `checkVinNumberValid` returns a status 400 with a `{ message: "vin <vin number> is invalid" }` if the vin number is [invalid](https://www.npmjs.com/package/vin-validator).
 
-  - `checkVinNumberUnique` returns a status 400 with a `{ message: "vin <vin number> already exists" }` if the vin number already exists in the database.
+  xxx `checkVinNumberUnique` returns a status 400 with a `{ message: "vin <vin number> already exists" }` if the vin number already exists in the database.
 
 ### Write a Cars API
 
 - Write CR (of CRUD) for the `cars` resource, using the middleware and model functions described above wherever appropriate inside `api/cars/cars-router.js` :
 
-  - `[GET] /api/cars` returns an array of cars sorted by id (or an empty array if there aren't any).
-  - `[GET] /api/cars/:id` returns a car by the given id.
-  - `[POST] /api/cars` returns the created car.
+  xxx  `[GET] /api/cars` returns an array of cars sorted by id (or an empty array if there aren't any).
+  xxx  `[GET] /api/cars/:id` returns a car by the given id.
+  xxx `[POST] /api/cars` returns the created car.
 
 - Manually test your endpoints with a REST client like `Insomnia` or `Postman` to check they are working as expected.
 - Test your endpoints automatically by running `npm test`.
